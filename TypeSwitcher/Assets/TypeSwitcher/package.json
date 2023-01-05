@@ -1,0 +1,15 @@
+{
+  "name": "com.thejoun.type-switcher",
+  "version": "1.0.0",
+  "displayName": "Type Switcher",
+  "description": "Easily select the type of a component or ScriptableObject from a defined pool of derived types",
+  "keywords": ["type", "editor", "switch", "generic"],
+  "license": "MIT",
+  "dependencies": {
+    "com.solidalloy.unity-dropdown": "1.2.0"
+  },
+  "author": {
+    "name": "thejoun",
+    "url": "https://github.com/thejoun/"
+  }
+}
