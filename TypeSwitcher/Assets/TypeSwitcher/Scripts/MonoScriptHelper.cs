@@ -18,15 +18,14 @@ namespace TypeSwitcher
         public static void SwitchType(ScriptableObject instance, Type type)
         {
             var monoScript = GetMonoScript(type);
-            ChangeScriptableObject(instance, monoScript);
+            ChangeMonoScript(instance, monoScript);
         }
 
         public static MonoScript GetMonoScript(Type type)
         {
-            var go = new GameObject("GetMonoScript temporary GameObject");
-
             if (typeof(MonoBehaviour).IsAssignableFrom(type))
             {
+                var go = new GameObject("GetMonoScript temporary GameObject");
                 var component = go.AddComponent(type) as MonoBehaviour;
                 var monoScript = MonoScript.FromMonoBehaviour(component);
             
@@ -40,7 +39,7 @@ namespace TypeSwitcher
                 var scriptableObject = ScriptableObject.CreateInstance(type);
                 var monoScript = MonoScript.FromScriptableObject(scriptableObject);
 
-                Object.DestroyImmediate(go);
+                Object.DestroyImmediate(scriptableObject);
                 
                 return monoScript;
             }
@@ -50,19 +49,7 @@ namespace TypeSwitcher
             return default;
         }
 
-        public static void ChangeMonoScript(MonoBehaviour instance, MonoScript script)
-        {
-#if UNITY_EDITOR
-            var so = new SerializedObject(instance);
-            var scriptProperty = so.FindProperty("m_Script");
-            
-            so.Update();
-            scriptProperty.objectReferenceValue = script;
-            so.ApplyModifiedProperties();
-#endif
-        }
-        
-        public static void ChangeScriptableObject(ScriptableObject instance, MonoScript script)
+        public static void ChangeMonoScript(Object instance, MonoScript script)
         {
 #if UNITY_EDITOR
             var so = new SerializedObject(instance);
