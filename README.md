@@ -1,5 +1,18 @@
 # Type Switcher
 
+## Installation
+
+Use Package Manager - follow the instructions on [OpenUPM](https://openupm.com/packages/com.thejoun.type-switcher/#modal-manualinstallation).
+
+You only need to add these scopes:
+
+- `com.thejoun.type-switcher`
+- `com.solidalloy.unity-dropdown`
+
+Alternatively, you can use OpenUPM CLI:
+
+`openupm add com.thejoun.type-switcher`
+
 ## How it works
 
 Let's say you have a `KnightEnemy` component, which derives from `Enemy`, 
