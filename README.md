@@ -8,8 +8,9 @@ See "Installation" on [OpenUPM](https://openupm.com/packages/com.thejoun.type-sw
 
 You only need to add these scopes if using Package Manager:
 
-- `com.thejoun.type-switcher`
-- `com.solidalloy.unity-dropdown`
+- `com.thejoun`
+- `com.solidalloy`
+- `org.nuget`
 
 ## How it works
 
