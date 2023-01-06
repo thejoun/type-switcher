@@ -4,8 +4,8 @@ Easily select the type of a MonoBehaviour or ScriptableObject from a list of all
 
 ## How it works (example)
 
-Let's say you have a `Knight Enemy` component, which derives from `Enemy`, 
-which in turn derives from `SwitchableMonoBehaviour`, provided by this plugin.
+Let's say you have a `KnightEnemy` component, which derives from `Enemy`, 
+which in turn is set up as a base type for switching (explained later).
 
 ![](img/knight-component.png)
 
@@ -13,17 +13,17 @@ By right-clicking on the component, in the context menu you'll see an option to 
 
 ![](img/context-menu-3.png)
 
-A dropdown menu with all existing `Enemy` subclasses will open.
+A dropdown menu with all existing subclasses of `Enemy` will open.
 Let's pick the Warlock.
 
 ![](img/enemy-dropdown.png)
 
-You just switched the component's type from Knight to Warlock. 
+You just switched the type of the component. 
 Any serialized values will persist if they have the same name in both classes.
 
 ![](img/warlock-component.png)
 
-Any type you switch to will also allow switching the same way. 
+Any type you switch to will also allow switching in the same way. 
 
 ## Setup
 
