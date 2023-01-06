@@ -3,16 +3,20 @@ using UnityEngine;
 
 namespace TypeSwitcher
 {
+    public abstract class SwitchableMonoBehaviour<T> : SwitchableMonoBehaviour
+    {
+        protected override TypeSwitchSettings TypeSwitchSettings => new TypeSwitchSettings<T>();
+    }
+    
     public abstract class SwitchableMonoBehaviour : MonoBehaviour
     {
+        protected abstract TypeSwitchSettings TypeSwitchSettings { get; }
+
         [ContextMenu("Switch Type")]
         protected virtual void SwitchType()
         {
-            new TypeDropdownMenu(GetType(), OnTypeSwitch, TypeSwitchSettings, sortItems: true)
-                .ShowAsContext();
+            TypeDropdownMenu.Create(GetType(), OnTypeSwitch, TypeSwitchSettings).ShowAsContext();
         }
-
-        protected abstract TypeSwitchSettings TypeSwitchSettings { get; }
 
         protected virtual void OnTypeSwitch(Type type)
         {

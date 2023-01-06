@@ -4,35 +4,40 @@ using Object = UnityEngine.Object;
 
 namespace TypeSwitcher
 {
+    public class TypeSwitchSettings<TBase> : TypeSwitchSettings
+    {
+        public override Type BaseType => typeof(TBase);
+    }
+    
     public class TypeSwitchSettings
     {
         /// <summary>
         /// The base class - only derived classes will be shown
         /// </summary>
-        public Type BaseType { get; set; } = typeof(Object);
+        public virtual Type BaseType { get; set; } = typeof(Object);
         
         /// <summary>
-        /// Hide the base class in the dropdown
+        /// Allow the base class to be selected in dropdown
         /// </summary>
-        public bool ExcludeBaseType { get; set; } = true;
+        public bool IncludeBaseType { get; set; } = false;
 
         /// <summary>
-        /// Strings to remove from displayed paths
+        /// Remove base type name from type paths
         /// </summary>
-        public string[] HideInPath { get; set; }
-
-        /// <summary>
-        /// Whether the whole path should be in title case (putting spaces between words)
-        /// </summary>
-        public bool TitleCasePath { get; set; } = true;
-
-        /// <summary>
-        /// Whether to add the TypeCategory property as a folder in the path
-        /// </summary>
-        public bool CategoryInPath { get; set; } = true;
+        public bool HideBaseType { get; set; } = true; 
         
         /// <summary>
-        /// Specify how to get the path of a type, instead of just the type name (default)
+        /// Specific strings to remove from type paths
+        /// </summary>
+        public string[] HideStrings { get; set; }
+
+        /// <summary>
+        /// Put spaces between words in type paths
+        /// </summary>
+        public bool TitleCase { get; set; } = true;
+
+        /// <summary>
+        /// Specify exactly how to get the path of a type (default is type name)
         /// </summary>
         public Func<Type, string> PathGetter { get; set; }
 
@@ -40,15 +45,20 @@ namespace TypeSwitcher
         {
             var path = PathGetter != null ? PathGetter(type) : type.Name;
 
-            if (HideInPath != null)
+            if (HideBaseType)
             {
-                foreach (var toIgnore in HideInPath)
+                path = path.Replace(BaseType.Name, "");
+            }
+            
+            if (HideStrings != null)
+            {
+                foreach (var toIgnore in HideStrings)
                 {
                     path = path.Replace(toIgnore, "");
                 }
             }
 
-            if (TitleCasePath)
+            if (TitleCase)
             {
                 path = Regex.Replace(path, "[A-Z]", " $0").Trim();
             }
@@ -60,18 +70,15 @@ namespace TypeSwitcher
         {
             var path = GetTypeName(type);
 
-            if (CategoryInPath)
+            var attributes = type.GetAttributes<TypeCategoryAttribute>();
+
+            foreach (var attribute in attributes)
             {
-                var attributes = type.GetAttributes<TypeCategoryAttribute>();
+                var category = attribute.CategoryString;
 
-                foreach (var attribute in attributes)
+                if (!string.IsNullOrEmpty(category))
                 {
-                    var category = attribute.CategoryString;
-
-                    if (!string.IsNullOrEmpty(category))
-                    {
-                        path = $"{category}/{path}";
-                    }
+                    path = $"{category}/{path}";
                 }
             }
 
