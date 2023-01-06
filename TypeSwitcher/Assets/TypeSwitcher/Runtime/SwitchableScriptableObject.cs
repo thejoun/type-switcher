@@ -1,17 +1,21 @@
 using System;
 using UnityEngine;
+#if UNITY_EDITOR
+using TypeSwitcher.Editor;
+#endif
 
 namespace TypeSwitcher
 {
-    public abstract class SwitchableMonoBehaviour<T> : SwitchableMonoBehaviour
+    public abstract class SwitchableScriptableObject<T> : SwitchableScriptableObject
     {
         protected override TypeSwitchSettings TypeSwitchSettings => new TypeSwitchSettings<T>();
     }
     
-    public abstract class SwitchableMonoBehaviour : MonoBehaviour
+    public abstract class SwitchableScriptableObject : ScriptableObject
     {
         protected abstract TypeSwitchSettings TypeSwitchSettings { get; }
 
+#if UNITY_EDITOR
         [ContextMenu("Switch Type")]
         protected virtual void SwitchType()
         {
@@ -22,5 +26,6 @@ namespace TypeSwitcher
         {
             MonoScriptHelper.SwitchType(this, type);
         }
+#endif
     }
 }

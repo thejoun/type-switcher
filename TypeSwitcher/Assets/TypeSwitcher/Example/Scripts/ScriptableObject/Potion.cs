@@ -2,7 +2,7 @@
 
 namespace TypeSwitcher.Example
 {
-    [CreateAssetMenu(fileName = "Potion", menuName = "TypeSwitcher/Potion")]
+    // [CreateAssetMenu(fileName = "Potion", menuName = "TypeSwitcher/Potion")]
     public class Potion : SwitchableScriptableObject<Potion>
     {
         protected enum Size

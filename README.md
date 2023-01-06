@@ -2,16 +2,12 @@
 
 ## Installation
 
-Use Package Manager - follow the instructions on [OpenUPM](https://openupm.com/packages/com.thejoun.type-switcher/#modal-manualinstallation).
+See "Installation" on [OpenUPM](https://openupm.com/packages/com.thejoun.type-switcher).
 
-You only need to add these scopes:
+You only need to add these scopes if using Package Manager:
 
 - `com.thejoun.type-switcher`
 - `com.solidalloy.unity-dropdown`
-
-Alternatively, you can use OpenUPM CLI:
-
-`openupm add com.thejoun.type-switcher`
 
 ## How it works
 

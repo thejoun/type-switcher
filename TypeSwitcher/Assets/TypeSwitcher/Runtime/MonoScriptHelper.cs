@@ -1,11 +1,10 @@
 #if UNITY_EDITOR
-using UnityEditor;
-#endif
 using System;
+using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace TypeSwitcher
+namespace TypeSwitcher.Editor
 {
     public static class MonoScriptHelper
     {
@@ -51,14 +50,13 @@ namespace TypeSwitcher
 
         public static void ChangeMonoScript(Object instance, MonoScript script)
         {
-#if UNITY_EDITOR
             var so = new SerializedObject(instance);
             var scriptProperty = so.FindProperty("m_Script");
             
             so.Update();
             scriptProperty.objectReferenceValue = script;
             so.ApplyModifiedProperties();
-#endif
         }
     }
 }
+#endif

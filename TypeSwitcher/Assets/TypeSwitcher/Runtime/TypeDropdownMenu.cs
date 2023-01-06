@@ -1,12 +1,15 @@
+#if UNITY_EDITOR
 using System;
 using System.Linq;
 using UnityDropdown.Editor;
 
-namespace TypeSwitcher
+namespace TypeSwitcher.Editor
 {
-    public static class TypeDropdownMenu
+    public class TypeDropdownMenu
     {
-        public static DropdownMenu<Type> Create(Type currentType, Action<Type> callback, TypeSwitchSettings settings)
+        private DropdownMenu<Type> _dropdown;
+
+        public static TypeDropdownMenu Create(Type currentType, Action<Type> callback, TypeSwitchSettings settings)
         {
             var baseType = settings.BaseType;
             var includeBaseType = settings.IncludeBaseType;
@@ -28,10 +31,19 @@ namespace TypeSwitcher
             {
                 currentItem.IsSelected = true;
             }
-
-            var dropdownMenu = new DropdownMenu<Type>(items, callback, 10, true);
             
-            return dropdownMenu;
+            var typeDropdown = new TypeDropdownMenu()
+            {
+                _dropdown = new DropdownMenu<Type>(items, callback, 10, true)
+            };
+            
+            return typeDropdown;
+        }
+
+        public void ShowAsContext()
+        {
+            _dropdown.ShowAsContext();
         }
     }
 }
+#endif

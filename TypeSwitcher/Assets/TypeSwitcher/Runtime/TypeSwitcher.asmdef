@@ -1,0 +1,16 @@
+{
+    "name": "TypeSwitcher",
+    "rootNamespace": "TypeSwitcher",
+    "references": [
+        "GUID:0046de5c905aeff408e019011d80d21e"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
