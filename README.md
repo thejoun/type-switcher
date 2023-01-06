@@ -1,8 +1,6 @@
 # Type Switcher
- 
-Easily select the type of a MonoBehaviour or ScriptableObject from a list of all derived classes.
 
-## How it works (example)
+## How it works
 
 Let's say you have a `KnightEnemy` component, which derives from `Enemy`, 
 which in turn is set up as a base type for switching (explained later).
