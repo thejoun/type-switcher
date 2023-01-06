@@ -1,5 +1,7 @@
 # Type Switcher
 
+[![openupm](https://img.shields.io/npm/v/com.thejoun.type-switcher?label=openupm&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.thejoun.type-switcher/)
+
 ## Installation
 
 See "Installation" on [OpenUPM](https://openupm.com/packages/com.thejoun.type-switcher).

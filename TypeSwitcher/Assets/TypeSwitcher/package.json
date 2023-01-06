@@ -1,6 +1,6 @@
 {
   "name": "com.thejoun.type-switcher",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "displayName": "Type Switcher",
   "description": "Easily switch the type of a component between derived classes",
   "keywords": ["type", "editor", "switch", "generic"],
