@@ -100,3 +100,7 @@ Properties of `TypeSwitchSettings` can be adjusted to make the switcher suit you
 
 Among others, you can specify the base type dynamically (i.e. in non-static context) 
 or use a custom getter for type names.
+
+## Dependencies
+
+- https://github.com/SolidAlloy/UnityDropdown
